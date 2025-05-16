@@ -1,4 +1,4 @@
-// store/login/Login.js
+
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {

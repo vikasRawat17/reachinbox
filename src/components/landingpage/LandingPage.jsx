@@ -8,7 +8,7 @@ export default function LandingPage() {
   };
   return (
     <div className="min-h-screen bg-black text-white flex flex-col">
-      {/* Header */}
+      
       <header className="py-6 text-center border-b border-gray-800">
         <h1 className="text-xl font-bold tracking-wide">
           <span className="bg-white text-black px-2 py-1 rounded">
@@ -17,7 +17,7 @@ export default function LandingPage() {
         </h1>
       </header>
 
-      {/* Main login area */}
+      
       <main className="flex-grow flex items-center justify-center px-4">
         <div className="bg-[#1a1a1a] rounded-xl shadow-xl p-8 w-full max-w-md text-center space-y-6">
           <h2 className="text-2xl font-semibold">Create a new account</h2>
@@ -43,7 +43,7 @@ export default function LandingPage() {
         </div>
       </main>
 
-      {/* Footer */}
+     
       <footer className="py-4 text-center text-xs text-gray-500 border-t border-gray-800">
         © {new Date().getFullYear()} Reachinbox. All rights reserved.
       </footer>

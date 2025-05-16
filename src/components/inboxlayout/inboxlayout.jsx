@@ -1,16 +1,20 @@
-// components/Home/Home.jsx
-
 import EmailContent from "../emailContent/EmailContent";
-import FunctionBar from "../functionbar/FunctionBAr";
 import InboxSidebar from "../inboxSidebar/InboxSidebar";
+import RightPanel from "../rightpanel/RightPanel";
+import FunctionBar from "../functionbar/FunctionBAr";
 
 export default function Inbox() {
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen overflow-hidden">
       <InboxSidebar />
       <div className="flex flex-col flex-1">
         <FunctionBar />
-        <EmailContent />
+        <div className="flex flex-1 overflow-hidden">
+          <div className="flex-1 overflow-y-auto hide-scrollbar">
+            <EmailContent />
+          </div>
+          <RightPanel />
+        </div>
       </div>
     </div>
   );

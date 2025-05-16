@@ -1,4 +1,3 @@
-// components/NoMessageIllustration.jsx
 export default function Vector() {
   return (
     <svg
@@ -9,10 +8,8 @@ export default function Vector() {
       xmlns="http://www.w3.org/2000/svg"
       className="mx-auto"
     >
-      {/* Background circle */}
       <circle cx="140" cy="115" r="100" fill="url(#gradient)" />
 
-      {/* Envelope base */}
       <rect
         x="60"
         y="90"
@@ -24,7 +21,6 @@ export default function Vector() {
         strokeWidth="3"
       />
 
-      {/* Envelope flap */}
       <polygon
         points="60,90 140,40 220,90"
         fill="#60A5FA"
@@ -32,7 +28,6 @@ export default function Vector() {
         strokeWidth="3"
       />
 
-      {/* Flying papers */}
       <rect
         x="90"
         y="55"
@@ -54,7 +49,6 @@ export default function Vector() {
         transform="rotate(15 150 55)"
       />
 
-      {/* Stars and sparkles */}
       <circle cx="50" cy="130" r="6" fill="#93C5FD" />
       <circle cx="230" cy="150" r="4" fill="#93C5FD" />
       <circle cx="120" cy="180" r="5" fill="#93C5FD" />
