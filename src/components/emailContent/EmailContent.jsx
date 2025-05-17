@@ -98,7 +98,7 @@ const EmailContent = () => {
   const emailsToDisplay = showAllReplies ? selectedEmail : [selectedEmail[0]];
 
   return (
-    <div className="p-4 space-y-4  bg-white dark:bg-black text-black dark:text-white  ">
+    <div className="p-4 space-y-4  bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-500 border ">
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-xl font-bold">Email Thread</h1>
         <button
@@ -121,7 +121,11 @@ const EmailContent = () => {
         >
           <div className="flex justify-between items-center mb-2">
             <h2 className="text-lg font-semibold">
-              {email.subject || "No Subject"}
+              {email.subject
+                ? email.subject
+                    .replace(/\s*[\|•]\s*[\w\d]+(\s+[\w\d]+)*$/, "")
+                    .trim()
+                : "No Subject"}
             </h2>
             <span className="text-sm">
               {new Date(email.sentAt).toLocaleString() || "Unknown Date"}
@@ -138,7 +142,6 @@ const EmailContent = () => {
             dangerouslySetInnerHTML={{ __html: email.body }}
           />
 
-          {/* Reply Button */}
           <div className="flex justify-between items-center mt-3">
             <button
               onClick={() => handleReplyToggle(email.id)}
@@ -148,7 +151,6 @@ const EmailContent = () => {
             </button>
           </div>
 
-          {/* Conditional Reply Form */}
           {replyOpenIds.includes(email.id) && (
             <div className="mt-3">
               <ReplyForm originalEmail={email} />
@@ -157,13 +159,21 @@ const EmailContent = () => {
         </div>
       ))}
 
-      {/* Show All Replies Button */}
       {!showAllReplies && selectedEmail.length > 1 && (
         <button
           onClick={() => setShowAllReplies(true)}
           className="block mx-auto mt-4 text-sm text-gray-600 hover:text-blue-600 hover:underline"
         >
           View all {selectedEmail.length} replies
+        </button>
+      )}
+
+      {showAllReplies && selectedEmail.length > 1 && (
+        <button
+          onClick={() => setShowAllReplies(false)}
+          className="block mx-auto mt-4 text-sm text-gray-600 hover:text-blue-600 hover:underline"
+        >
+          Show less
         </button>
       )}
 

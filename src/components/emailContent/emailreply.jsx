@@ -44,19 +44,25 @@ const ReplyForm = ({ originalEmail }) => {
   };
 
   return (
-    <div className="bg-[#1e1e1e] text-white rounded-lg border border-gray-700 p-4 max-w-2xl mx-auto">
+    <div className="bg-white dark:bg-black text-black dark:text-white rounded-lg border border-gray-700 p-4 max-w-2xl mx-auto">
       <div className="text-sm mb-2 border-b border-gray-700 pb-2">
         <div>
           <strong>To:</strong>{" "}
-          <span className="text-gray-300">{originalEmail.fromEmail}</span>
+          <span className="text-black dark:text-white">
+            {originalEmail.fromEmail}
+          </span>
         </div>
         <div>
           <strong>From:</strong>{" "}
-          <span className="text-gray-300">{originalEmail.toEmail}</span>
+          <span className="text-black dark:text-white">
+            {originalEmail.toEmail}
+          </span>
         </div>
         <div>
           <strong>Subject:</strong>{" "}
-          <span className="text-gray-300">{originalEmail.subject}</span>
+          <span className="text-black dark:text-white">
+            {originalEmail.subject}
+          </span>
         </div>
       </div>
 
@@ -64,7 +70,7 @@ const ReplyForm = ({ originalEmail }) => {
         value={body}
         onChange={(e) => setBody(e.target.value)}
         placeholder="Write your message here..."
-        className="w-full h-40 bg-[#2b2b2b] text-white p-3 rounded-md border border-gray-600 resize-none focus:outline-none"
+        className="w-full h-40 bg-white dark:bg-black text-black dark:text-white p-3 rounded-md border border-gray-600 resize-none focus:outline-none"
       />
 
       <div className="flex justify-between items-center mt-3">
@@ -84,10 +90,6 @@ const ReplyForm = ({ originalEmail }) => {
         </div>
 
         <div className="flex items-center gap-2">
-          <select className="bg-[#2b2b2b] text-gray-300 px-2 py-1 rounded-md border border-gray-600 text-sm">
-            <option value="send">Send</option>
-            <option value="schedule">Schedule</option>
-          </select>
           <button
             onClick={handleSend}
             className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-1.5 rounded-md flex items-center gap-1"

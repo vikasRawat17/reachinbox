@@ -15,21 +15,21 @@ export default function InboxSidebar() {
 
   if (status === "loading")
     return (
-      <div className="w-72 h-full bg-white dark:bg-zinc-900 text-black dark:text-white border-r border-gray-200 dark:border-gray-700 flex items-center justify-center">
+      <div className="w-72 h-full bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-500 border flex items-center justify-center">
         Loading emails...
       </div>
     );
 
   if (status === "failed")
     return (
-      <div className="w-72 h-full bg-white dark:bg-zinc-900 text-red-600 dark:text-red-400 border-r border-gray-200 dark:border-gray-700 flex items-center justify-center">
+      <div className="w-72 h-full bg-white dark:bg-zinc-900 text-red-600 dark:text-red-400 border-r border-black dark:border-gray-700 flex items-center justify-center">
         Error: {error}
       </div>
     );
 
   return (
-    <div className="w-72 bg-white dark:bg-zinc-900 text-black dark:text-white h-full border-r border-gray-200 dark:border-gray-700 flex flex-col">
-      <div className="px-4 py-3 border-b border-gray-200 dark:border-gray-700">
+    <div className="w-72 bg-white dark:bg-zinc-900 text-black dark:text-white h-full border border-black dark:border-gray-700 flex flex-col">
+      <div className="px-4 py-3 border-b border-black dark:border-gray-700">
         <div className="flex justify-between items-center">
           <h2 className="font-semibold">All Inbox(s)</h2>
           <button className="text-sm bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">

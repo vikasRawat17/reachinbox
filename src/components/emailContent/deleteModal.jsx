@@ -2,7 +2,7 @@ import React from "react";
 
 const DeleteConfirmationModal = ({ onCancel, onConfirm }) => {
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+    <div className="fixed inset-0 bg-white dark:bg-black text-black dark:text-white bg-opacity-50 flex justify-center items-center z-50">
       <div className="bg-white rounded-lg shadow-xl p-6 w-96">
         <h2 className="text-xl font-bold mb-4">Are you sure?</h2>
         <p className="text-gray-600 mb-6">

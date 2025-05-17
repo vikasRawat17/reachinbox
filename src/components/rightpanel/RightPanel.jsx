@@ -25,7 +25,7 @@ const RightPanel = () => {
 
   if (!isValidThread || !latestEmail) {
     return (
-      <div className="w-80 p-4 border-l border-gray-200 bg-white dark:bg-black text-black dark:text-white">
+      <div className="w-80 p-4 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-500 border ">
         <p>No email thread selected.</p>
       </div>
     );

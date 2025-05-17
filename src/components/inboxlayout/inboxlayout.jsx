@@ -10,7 +10,7 @@ export default function Inbox() {
       <div className="flex flex-col flex-1">
         <FunctionBar />
         <div className="flex flex-1 overflow-hidden">
-          <div className="flex-1 overflow-y-auto hide-scrollbar">
+          <div className="flex-1 overflow-y-auto hide-scrollbar bg-white dark:bg-black text-black dark:text-white">
             <EmailContent />
           </div>
           <RightPanel />
