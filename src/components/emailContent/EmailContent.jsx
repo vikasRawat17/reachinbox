@@ -43,8 +43,7 @@ const EmailContent = () => {
     setIsSnoozing(true);
 
     try {
-      
-      const snoozeDuration = 60 * 1000; 
+      const snoozeDuration = 60 * 1000;
       await dispatch(
         snoozeEmail({ id: selectedEmailId, duration: snoozeDuration })
       );
@@ -61,11 +60,23 @@ const EmailContent = () => {
       if (e.key.toLowerCase() === "d" && selectedEmailId) {
         setShowDeleteModal(true);
       }
+
+      // Add keyboard shortcut for reply (r key)
+      if (
+        e.key.toLowerCase() === "r" &&
+        selectedEmailId &&
+        selectedEmail &&
+        selectedEmail.length > 0
+      ) {
+        // Open reply for the current/first email in the thread
+        const currentEmailId = selectedEmail[0].id;
+        handleReplyToggle(currentEmailId);
+      }
     };
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [selectedEmailId]);
+  }, [selectedEmailId, selectedEmail]);
 
   const handleDeleteEmail = async () => {
     try {
@@ -141,7 +152,8 @@ const EmailContent = () => {
               onClick={() => handleReplyToggle(email.id)}
               className="text-blue-600 text-sm font-medium hover:underline"
             >
-              {replyOpenIds.includes(email.id) ? "Cancel Reply" : "Reply"}
+              {replyOpenIds.includes(email.id) ? "Cancel Reply" : "Reply"}{" "}
+              <span className="text-gray-400 text-xs">(or press 'r')</span>
             </button>
           </div>
 
