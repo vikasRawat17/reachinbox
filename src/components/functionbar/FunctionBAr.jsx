@@ -3,21 +3,10 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
 export default function FunctionBar() {
-  const { selectedEmail } = useSelector((state) => state.emails);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const { user } = useSelector((state) => state.login);
 
-  useEffect(() => {
-    if (selectedEmail && selectedEmail.length > 0) {
-      const firstEmail = selectedEmail[0];
-      const rawToName = firstEmail.toName?.trim();
-      const toEmail = firstEmail.toEmail || "";
-      const fallbackName = toEmail.split("@")[0];
-
-      setName(rawToName || fallbackName);
-      setEmail(toEmail);
-    }
-  }, [selectedEmail]);
+  const email = user.user.email;
+  const name = user.user.firstName;
 
   const [showMeetingDropdown, setShowMeetingDropdown] = useState(false);
   const [showMoreDropdown, setShowMoreDropdown] = useState(false);

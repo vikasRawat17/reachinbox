@@ -6,6 +6,7 @@ import {
   deleteEmails,
   fetchEmails,
   selectEmail,
+  snoozeEmail,
 } from "../../store/emails/Email";
 import DeleteConfirmationModal from "./deleteModal";
 
@@ -42,18 +43,11 @@ const EmailContent = () => {
     setIsSnoozing(true);
 
     try {
-      const snoozeDuration = 60 * 60 * 1000;
-      const snoozeUntil = Date.now() + snoozeDuration;
-
-      const existingSnoozed = JSON.parse(
-        localStorage.getItem("snoozedEmails") || "{}"
+      
+      const snoozeDuration = 60 * 1000; 
+      await dispatch(
+        snoozeEmail({ id: selectedEmailId, duration: snoozeDuration })
       );
-
-      existingSnoozed[selectedEmailId] = snoozeUntil;
-      localStorage.setItem("snoozedEmails", JSON.stringify(existingSnoozed));
-
-      await dispatch(fetchEmails());
-
       dispatch(selectEmail(null));
     } catch (error) {
       console.error("Failed to snooze email:", error);

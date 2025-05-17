@@ -5,18 +5,9 @@ import { useSelector } from "react-redux";
 export default function Header() {
   const [isDark, setIsDark] = useState(false);
 
-  const { selectedEmail } = useSelector((state) => state.emails);
-  const [name, setName] = useState("");
+  const { user } = useSelector((state) => state.login);
 
-  useEffect(() => {
-    if (selectedEmail && selectedEmail.length > 0) {
-      const firstEmail = selectedEmail[0];
-      const rawToName = firstEmail.toName?.trim();
-      const toEmail = firstEmail.toEmail || "";
-      const fallbackName = toEmail.split("@")[0];
-      setName(rawToName || fallbackName);
-    }
-  }, [selectedEmail]);
+  const name = user.user.firstName;
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");

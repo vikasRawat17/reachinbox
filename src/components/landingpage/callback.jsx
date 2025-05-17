@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { loginSuccess } from "../../store/login/Login";
+import { jwtDecode } from "jwt-decode";
 
 export default function AuthCallback() {
   const dispatch = useDispatch();
@@ -13,7 +14,8 @@ export default function AuthCallback() {
     const token = queryParams.get("token");
 
     if (token) {
-      dispatch(loginSuccess({ token }));
+      const userInfo = jwtDecode(token);
+      dispatch(loginSuccess({ token, userInfo }));
     } else {
       navigate("/login");
     }

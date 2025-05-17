@@ -11,6 +11,12 @@ export default function InboxSidebar() {
 
   useEffect(() => {
     dispatch(fetchEmails());
+
+    const refreshInterval = setInterval(() => {
+      dispatch(fetchEmails());
+    }, 30000);
+
+    return () => clearInterval(refreshInterval);
   }, [dispatch]);
 
   if (status === "loading")
